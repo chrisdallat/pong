@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 3.10)
-project (tracker LANGUAGES CXX)
+project (pong LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -9,10 +9,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # QT6 QT5 specifics
 find_package(   QT NAMES Qt6 REQUIRED COMPONENTS Widgets Multimedia MultimediaWidgets)
-#find_package(   Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Multimedia MultimediaWidgets)
 
-find_package(   OpenCV REQUIRED )
-find_package(   SDL2 REQUIRED   )
+#find_package(   OpenCV REQUIRED )
+#find_package(   SDL2 REQUIRED   )
 
 #include all relevant directories
 include_directories(    ${PROJECT_SOURCE_DIR}/include
@@ -32,8 +31,9 @@ target_link_libraries(  ${PROJECT_NAME} PRIVATE
                         #Qt${QT_VERSION_MAJOR}::Multimedia 
                         #Qt${QT_VERSION_MAJOR}::MultimediaWidgets
                         # AV
-                        ${SDL2_LIBRARIES}
-                        ${OpenCV_LIBS})
+                        #${SDL2_LIBRARIES}
+                        #{OpenCV_LIBS}
+                        )
 
 #if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 #    qt_finalize_executable(${PROJECT_NAME})
