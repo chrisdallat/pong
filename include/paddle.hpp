@@ -10,18 +10,18 @@ class Paddle
         ~Paddle();
 
         //testing: remove later
-        void                do_something();
 
     private:
-        void                do_another();
+        int                 get_paddle_size();
+        void                set_paddle_size();
 
         //special types
         // cv::Ptr<cv::Tracker> m_tracker;
         // cv::Rect m_tracking_box;
         
         //other private class variables
-        int                 m_paddle_length = 640;
-        int                 m_paddle_width = 480;
+        int                 m_paddle_size = 100;
+        int                 m_paddle_width = 5;
 
 
 };

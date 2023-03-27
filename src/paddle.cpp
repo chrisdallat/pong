@@ -2,33 +2,22 @@
 
 Paddle::Paddle() 
 {
-    // m_valid = true;
-    // if (m_capture.open(m_camera) == false) 
-    // {
-    //     std::cout << "Failed to open camera" << std::endl;
-    //     m_valid = false;
-    // }
-
-    // m_capture.set(cv::CAP_PROP_FRAME_WIDTH, m_video_width);
-    // m_capture.set(cv::CAP_PROP_FRAME_HEIGHT, m_video_height);
-    // m_mat_original = cv::Mat::zeros(m_video_height, m_video_width, CV_8UC3);
-	// m_tracker = cv::TrackerKCF::create();
+    std::cout << "Initialising Paddle" << std::endl;
 }
 
 Paddle::~Paddle() 
 {
-    // m_capture.release();
-    // cv::destroyAllWindows();
+    std::cout << "Destroying Paddle" << std::endl;
 }
 
-void Paddle::do_something()
+int Paddle::get_paddle_size()
 {
-	std::cout << "do_something" << std::endl;
+	std::cout << "get_paddle_size()" << std::endl;
 }
 
-void Paddle::do_another()
+void Paddle::set_paddle_size()
 {
-	std::cout << "do_another" << std::endl;
+	std::cout << "set_paddle_size" << std::endl;
 }
 
 

@@ -10,7 +10,7 @@ class Window
         ~Window();
 
         //testing: remove later
-        void                do_something();
+        void                start_game();
 
     private:
         void                do_another();

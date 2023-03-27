@@ -153,6 +153,78 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong.dir/build.make CMakeFiles/pong.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+src/ball.o: src/ball.cpp.o
+.PHONY : src/ball.o
+
+# target to build an object file
+src/ball.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong.dir/build.make CMakeFiles/pong.dir/src/ball.cpp.o
+.PHONY : src/ball.cpp.o
+
+src/ball.i: src/ball.cpp.i
+.PHONY : src/ball.i
+
+# target to preprocess a source file
+src/ball.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong.dir/build.make CMakeFiles/pong.dir/src/ball.cpp.i
+.PHONY : src/ball.cpp.i
+
+src/ball.s: src/ball.cpp.s
+.PHONY : src/ball.s
+
+# target to generate assembly for a file
+src/ball.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong.dir/build.make CMakeFiles/pong.dir/src/ball.cpp.s
+.PHONY : src/ball.cpp.s
+
+src/game.o: src/game.cpp.o
+.PHONY : src/game.o
+
+# target to build an object file
+src/game.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong.dir/build.make CMakeFiles/pong.dir/src/game.cpp.o
+.PHONY : src/game.cpp.o
+
+src/game.i: src/game.cpp.i
+.PHONY : src/game.i
+
+# target to preprocess a source file
+src/game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong.dir/build.make CMakeFiles/pong.dir/src/game.cpp.i
+.PHONY : src/game.cpp.i
+
+src/game.s: src/game.cpp.s
+.PHONY : src/game.s
+
+# target to generate assembly for a file
+src/game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong.dir/build.make CMakeFiles/pong.dir/src/game.cpp.s
+.PHONY : src/game.cpp.s
+
+src/paddle.o: src/paddle.cpp.o
+.PHONY : src/paddle.o
+
+# target to build an object file
+src/paddle.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong.dir/build.make CMakeFiles/pong.dir/src/paddle.cpp.o
+.PHONY : src/paddle.cpp.o
+
+src/paddle.i: src/paddle.cpp.i
+.PHONY : src/paddle.i
+
+# target to preprocess a source file
+src/paddle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong.dir/build.make CMakeFiles/pong.dir/src/paddle.cpp.i
+.PHONY : src/paddle.cpp.i
+
+src/paddle.s: src/paddle.cpp.s
+.PHONY : src/paddle.s
+
+# target to generate assembly for a file
+src/paddle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pong.dir/build.make CMakeFiles/pong.dir/src/paddle.cpp.s
+.PHONY : src/paddle.cpp.s
+
 src/window.o: src/window.cpp.o
 .PHONY : src/window.o
 
@@ -189,6 +261,15 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/ball.o"
+	@echo "... src/ball.i"
+	@echo "... src/ball.s"
+	@echo "... src/game.o"
+	@echo "... src/game.i"
+	@echo "... src/game.s"
+	@echo "... src/paddle.o"
+	@echo "... src/paddle.i"
+	@echo "... src/paddle.s"
 	@echo "... src/window.o"
 	@echo "... src/window.i"
 	@echo "... src/window.s"

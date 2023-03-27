@@ -83,10 +83,52 @@ CMakeFiles/pong.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pong.dir/main.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/chrisdallat/2023_projects/pong/main.cpp -o CMakeFiles/pong.dir/main.cpp.s
 
+CMakeFiles/pong.dir/src/ball.cpp.o: CMakeFiles/pong.dir/flags.make
+CMakeFiles/pong.dir/src/ball.cpp.o: /Users/chrisdallat/2023_projects/pong/src/ball.cpp
+CMakeFiles/pong.dir/src/ball.cpp.o: CMakeFiles/pong.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/chrisdallat/2023_projects/pong/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/pong.dir/src/ball.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pong.dir/src/ball.cpp.o -MF CMakeFiles/pong.dir/src/ball.cpp.o.d -o CMakeFiles/pong.dir/src/ball.cpp.o -c /Users/chrisdallat/2023_projects/pong/src/ball.cpp
+
+CMakeFiles/pong.dir/src/ball.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pong.dir/src/ball.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/chrisdallat/2023_projects/pong/src/ball.cpp > CMakeFiles/pong.dir/src/ball.cpp.i
+
+CMakeFiles/pong.dir/src/ball.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pong.dir/src/ball.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/chrisdallat/2023_projects/pong/src/ball.cpp -o CMakeFiles/pong.dir/src/ball.cpp.s
+
+CMakeFiles/pong.dir/src/game.cpp.o: CMakeFiles/pong.dir/flags.make
+CMakeFiles/pong.dir/src/game.cpp.o: /Users/chrisdallat/2023_projects/pong/src/game.cpp
+CMakeFiles/pong.dir/src/game.cpp.o: CMakeFiles/pong.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/chrisdallat/2023_projects/pong/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/pong.dir/src/game.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pong.dir/src/game.cpp.o -MF CMakeFiles/pong.dir/src/game.cpp.o.d -o CMakeFiles/pong.dir/src/game.cpp.o -c /Users/chrisdallat/2023_projects/pong/src/game.cpp
+
+CMakeFiles/pong.dir/src/game.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pong.dir/src/game.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/chrisdallat/2023_projects/pong/src/game.cpp > CMakeFiles/pong.dir/src/game.cpp.i
+
+CMakeFiles/pong.dir/src/game.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pong.dir/src/game.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/chrisdallat/2023_projects/pong/src/game.cpp -o CMakeFiles/pong.dir/src/game.cpp.s
+
+CMakeFiles/pong.dir/src/paddle.cpp.o: CMakeFiles/pong.dir/flags.make
+CMakeFiles/pong.dir/src/paddle.cpp.o: /Users/chrisdallat/2023_projects/pong/src/paddle.cpp
+CMakeFiles/pong.dir/src/paddle.cpp.o: CMakeFiles/pong.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/chrisdallat/2023_projects/pong/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/pong.dir/src/paddle.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pong.dir/src/paddle.cpp.o -MF CMakeFiles/pong.dir/src/paddle.cpp.o.d -o CMakeFiles/pong.dir/src/paddle.cpp.o -c /Users/chrisdallat/2023_projects/pong/src/paddle.cpp
+
+CMakeFiles/pong.dir/src/paddle.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pong.dir/src/paddle.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/chrisdallat/2023_projects/pong/src/paddle.cpp > CMakeFiles/pong.dir/src/paddle.cpp.i
+
+CMakeFiles/pong.dir/src/paddle.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pong.dir/src/paddle.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/chrisdallat/2023_projects/pong/src/paddle.cpp -o CMakeFiles/pong.dir/src/paddle.cpp.s
+
 CMakeFiles/pong.dir/src/window.cpp.o: CMakeFiles/pong.dir/flags.make
 CMakeFiles/pong.dir/src/window.cpp.o: /Users/chrisdallat/2023_projects/pong/src/window.cpp
 CMakeFiles/pong.dir/src/window.cpp.o: CMakeFiles/pong.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/chrisdallat/2023_projects/pong/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/pong.dir/src/window.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/chrisdallat/2023_projects/pong/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/pong.dir/src/window.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pong.dir/src/window.cpp.o -MF CMakeFiles/pong.dir/src/window.cpp.o.d -o CMakeFiles/pong.dir/src/window.cpp.o -c /Users/chrisdallat/2023_projects/pong/src/window.cpp
 
 CMakeFiles/pong.dir/src/window.cpp.i: cmake_force
@@ -100,16 +142,23 @@ CMakeFiles/pong.dir/src/window.cpp.s: cmake_force
 # Object files for target pong
 pong_OBJECTS = \
 "CMakeFiles/pong.dir/main.cpp.o" \
+"CMakeFiles/pong.dir/src/ball.cpp.o" \
+"CMakeFiles/pong.dir/src/game.cpp.o" \
+"CMakeFiles/pong.dir/src/paddle.cpp.o" \
 "CMakeFiles/pong.dir/src/window.cpp.o"
 
 # External object files for target pong
 pong_EXTERNAL_OBJECTS =
 
 pong: CMakeFiles/pong.dir/main.cpp.o
+pong: CMakeFiles/pong.dir/src/ball.cpp.o
+pong: CMakeFiles/pong.dir/src/game.cpp.o
+pong: CMakeFiles/pong.dir/src/paddle.cpp.o
 pong: CMakeFiles/pong.dir/src/window.cpp.o
 pong: CMakeFiles/pong.dir/build.make
+pong: /opt/homebrew/Cellar/raylib/4.5.0/lib/libraylib.dylib
 pong: CMakeFiles/pong.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/chrisdallat/2023_projects/pong/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable pong"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/chrisdallat/2023_projects/pong/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable pong"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pong.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

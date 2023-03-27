@@ -1,29 +1,31 @@
 #include "window.hpp"
+#include "game.hpp"
+#include "raylib.h"
 
 Window::Window() 
 {
-    // m_valid = true;
-    // if (m_capture.open(m_camera) == false) 
-    // {
-    //     std::cout << "Failed to open camera" << std::endl;
-    //     m_valid = false;
-    // }
+    std::cout << "Initialising Window Object" << std::endl;
 
-    // m_capture.set(cv::CAP_PROP_FRAME_WIDTH, m_video_width);
-    // m_capture.set(cv::CAP_PROP_FRAME_HEIGHT, m_video_height);
-    // m_mat_original = cv::Mat::zeros(m_video_height, m_video_width, CV_8UC3);
-	// m_tracker = cv::TrackerKCF::create();
+    InitWindow(1000, 600, "PONG");
+    SetWindowState(FLAG_VSYNC_HINT);
+
+    Game game;
+
+	while(!WindowShouldClose())
+	{
+		BeginDrawing();
+			ClearBackground(BLACK);
+            DrawFPS(10,10);
+            game.run_game();
+		EndDrawing();
+	}
 }
 
 Window::~Window() 
 {
-    // m_capture.release();
-    // cv::destroyAllWindows();
-}
+    std::cout << "Closing Window: Deconstructor" << std::endl;
 
-void Window::do_something()
-{
-	std::cout << "do_something" << std::endl;
+    CloseWindow();
 }
 
 void Window::do_another()
