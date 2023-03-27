@@ -9,15 +9,9 @@ class Window
         Window();
         ~Window();
 
-        //testing: remove later
-        void                start_game();
+        // void                start_game();
 
     private:
-        void                do_another();
-
-        //special types
-        // cv::Ptr<cv::Tracker> m_tracker;
-        // cv::Rect m_tracking_box;
         
         //other private class variables
         int                 m_video_width = 640;

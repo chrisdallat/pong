@@ -8,11 +8,13 @@ Ball::Ball()
     m_xspeed = 5;
     m_yspeed = 5;
     m_radius = 5;
+    reset_score();
 }
 
 Ball::~Ball() 
 {
     std::cout << "Destroying Ball" << std::endl;
+
 }
 void Ball::draw_ball()
 {
@@ -28,8 +30,10 @@ void Ball::move_ball()
     else if(get_xpos() > 0 && get_xspeed() < 0)   
         set_xpos(get_xspeed());
     else
+    {
+        set_score();
         reset_ball();
-    
+    }
 
     if(get_ypos() < GetScreenHeight() && get_yspeed() > 0)
         set_ypos(get_yspeed());
@@ -39,12 +43,45 @@ void Ball::move_ball()
         set_yspeed(get_yspeed() * -1);
 }
 
+int Ball::get_score1()
+{
+    return m_player1_score;
+}
+
+void Ball::point_player1()
+{
+    m_player1_score += 1;
+}
+        
+int Ball::get_score2()
+{
+    return m_player2_score;
+}  
+
+void Ball::point_player2()
+{
+    m_player2_score += 1;
+}
+
+void Ball::reset_score()
+{
+    m_player1_score = 0;
+    m_player2_score = 0;
+}
+
+void Ball::set_score()
+{
+    if(get_xspeed() > 0)
+        point_player1();
+    if(get_xspeed() < 0)
+        point_player2();
+}
+
 void Ball::reset_ball()
 {
     m_xpos = GetScreenWidth() / 2;
     m_ypos = GetScreenHeight() / 2;
-    m_xspeed = 5;
-    m_yspeed = 5;
+    m_xspeed *= -1;
 }
 
 float Ball::get_xpos()

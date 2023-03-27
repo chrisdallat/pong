@@ -15,7 +15,8 @@ Window::Window()
 	{
 		BeginDrawing();
 			ClearBackground(BLACK);
-            DrawFPS(10,10);
+            DrawRectangle(GetScreenWidth()/2, 40, 2, GetScreenHeight(), WHITE);
+            
             game.run_game();
 		EndDrawing();
 	}
@@ -26,11 +27,6 @@ Window::~Window()
     std::cout << "Closing Window: Deconstructor" << std::endl;
 
     CloseWindow();
-}
-
-void Window::do_another()
-{
-	std::cout << "do_another" << std::endl;
 }
 
 

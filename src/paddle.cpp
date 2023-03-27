@@ -27,7 +27,6 @@ Paddle::~Paddle()
 
 void Paddle::draw_paddle()
 {
-    // DrawRectangle(get_xpos(), get_ypos(), get_width(), get_length(), WHITE);
     DrawRectangleRec(getRect(), WHITE);
 }
 

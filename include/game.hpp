@@ -7,6 +7,8 @@
 
 #include "raylib.h"
 
+#include <string>
+
 class Game
 {
     public:
@@ -17,15 +19,14 @@ class Game
 
         void                collision_detect();
 
+        void                keep_score();
+
     private:
         
 
         Ball                m_ball;
         Paddle              m_player1;
         Paddle              m_player2;
-
-        int                 m_player1_score;
-        int                 m_player2_score;
 
         bool                m_exit = false;
 };
