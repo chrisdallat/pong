@@ -7,7 +7,7 @@ Ball::Ball()
     m_ypos = GetScreenHeight() / 2;
     m_xspeed = 5;
     m_yspeed = 5;
-    m_ball_size = 5;
+    m_radius = 5;
 }
 
 Ball::~Ball() 
@@ -16,7 +16,7 @@ Ball::~Ball()
 }
 void Ball::draw_ball()
 {
-    DrawCircle(get_xpos(), get_ypos(), get_ball_size(), WHITE);
+    DrawCircle(get_xpos(), get_ypos(), get_radius(), WHITE);
 }
 
 void Ball::move_ball()
@@ -28,7 +28,7 @@ void Ball::move_ball()
     else if(get_xpos() > 0 && get_xspeed() < 0)   
         set_xpos(get_xspeed());
     else
-        set_xspeed(get_xspeed() * -1);
+        reset_ball();
     
 
     if(get_ypos() < GetScreenHeight() && get_yspeed() > 0)
@@ -39,7 +39,15 @@ void Ball::move_ball()
         set_yspeed(get_yspeed() * -1);
 }
 
-int Ball::get_xpos()
+void Ball::reset_ball()
+{
+    m_xpos = GetScreenWidth() / 2;
+    m_ypos = GetScreenHeight() / 2;
+    m_xspeed = 5;
+    m_yspeed = 5;
+}
+
+float Ball::get_xpos()
 {
     return m_xpos;
 }
@@ -49,7 +57,7 @@ void Ball::set_xpos(int speed)
     m_xpos += speed;
 }
 
-int Ball::get_ypos()
+float Ball::get_ypos()
 {
     return m_ypos;
 }
@@ -79,14 +87,14 @@ void Ball::set_yspeed(int speed)
     m_yspeed = speed;
 }
         
-int Ball::get_ball_size()
+int Ball::get_radius()
 {
-    return m_ball_size;
+    return m_radius;
 }
 
-void Ball::set_ball_size(int ball_size)
+void Ball::set_radius(int radius)
 {
-	m_ball_size = ball_size;
+	m_radius = radius;
 }
 
 

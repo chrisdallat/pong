@@ -5,14 +5,17 @@
 #include "ball.hpp"
 #include "paddle.hpp"
 
+#include "raylib.h"
+
 class Game
 {
     public:
         Game();
         ~Game();
 
-        //testing: remove later
         void                run_game();
+
+        void                collision_detect();
 
     private:
         

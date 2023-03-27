@@ -28,7 +28,7 @@ Paddle::~Paddle()
 void Paddle::draw_paddle()
 {
     // DrawRectangle(get_xpos(), get_ypos(), get_width(), get_length(), WHITE);
-    DrawRectangle(get_xpos(), get_ypos(), get_width(), get_length(), WHITE);
+    DrawRectangleRec(getRect(), WHITE);
 }
 
 void Paddle::move_paddle(int player)
@@ -67,7 +67,7 @@ bool Paddle::within_lower()
     return false;
 }
 
-int Paddle::get_length()
+float Paddle::get_length()
 {
 	return m_length;
 }
@@ -77,7 +77,7 @@ void Paddle::set_length(int length)
 	m_length = length;
 }
 
-int Paddle::get_width()
+float Paddle::get_width()
 {
 	return m_width;
 }
@@ -87,7 +87,7 @@ void Paddle::set_width(int width)
 	m_width = width;
 }
 
-int Paddle::get_xpos()
+float Paddle::get_xpos()
 {
     return m_xpos;
 }
@@ -97,7 +97,7 @@ void Paddle::set_xpos(int speed)
 	m_xpos += speed;
 }
 
-int Paddle::get_ypos()
+float Paddle::get_ypos()
 {
     return m_ypos;
 }
@@ -127,5 +127,8 @@ void Paddle::set_yspeed(int speed)
 	m_yspeed = speed;
 }
 
-
+Rectangle Paddle::getRect()
+{
+    return Rectangle{get_xpos(), get_ypos(), get_width(), get_length()};
+}
 

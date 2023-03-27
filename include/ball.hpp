@@ -14,10 +14,12 @@ class Ball
         void                draw_ball();
         void                move_ball();
 
-        int                 get_xpos();
+        void                reset_ball();
+
+        float               get_xpos();
         void                set_xpos(int speed);
 
-        int                 get_ypos();
+        float               get_ypos();
         void                set_ypos(int speed);
 
         int                 get_xspeed();
@@ -26,16 +28,16 @@ class Ball
         int                 get_yspeed();
         void                set_yspeed(int speed);
         
-        int                 get_ball_size();
-        void                set_ball_size(int ball_size);
+        int                 get_radius();
+        void                set_radius(int radius);
 
     private:
         
-        int                 m_xpos;
-        int                 m_ypos;
+        float                 m_xpos;
+        float                 m_ypos;
         int                 m_xspeed;
         int                 m_yspeed;   
-        int                 m_ball_size;
+        int                 m_radius;
 
 };
 

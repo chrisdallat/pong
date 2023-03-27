@@ -17,16 +17,16 @@ class Paddle
         bool                within_upper();
         bool                within_lower();
 
-        int                 get_length();
+        float               get_length();
         void                set_length(int length);
 
-        int                 get_width();
+        float               get_width();
         void                set_width(int width);
 
-        int                 get_xpos();
+        float               get_xpos();
         void                set_xpos(int speed);
 
-        int                 get_ypos();
+        float               get_ypos();
         void                set_ypos(int speed);
 
         int                 get_xspeed();
@@ -35,13 +35,15 @@ class Paddle
         int                 get_yspeed();
         void                set_yspeed(int speed);
 
+        Rectangle           getRect();
+
     private:
         
         //other private class variables
-        int                 m_length;
-        int                 m_width;
-        int                 m_xpos;
-        int                 m_ypos;
+        float                 m_length;
+        float                 m_width;
+        float                 m_xpos;
+        float                 m_ypos;
         int                 m_xspeed;
         int                 m_yspeed;      
 
