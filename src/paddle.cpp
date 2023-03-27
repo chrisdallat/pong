@@ -1,4 +1,4 @@
-#include "../include/paddle.hpp"
+#include "paddle.hpp"
 
 Paddle::Paddle()
 {
@@ -11,12 +11,12 @@ Paddle::Paddle(int player)
     set_length(100);
     set_width(10);
     set_yspeed(5);
-    m_ypos = GetScreenHeight()/2 - 50;
+    m_ypos = GetScreenHeight()/2 - PADDING;
 
     if(player == 1)
-        m_xpos = 50;
+        m_xpos = PADDING;
     if(player == 2)
-        m_xpos = GetScreenWidth() - 50;
+        m_xpos = GetScreenWidth() - PADDING;
 
 }
 
@@ -52,6 +52,7 @@ void Paddle::move_paddle(int player)
 
 bool Paddle::within_upper()
 {
+    // is paddle within upper boundary
     if((get_ypos()) >= 0)
         return true;
     
@@ -60,6 +61,7 @@ bool Paddle::within_upper()
 
 bool Paddle::within_lower()
 {
+    // is paddle within upper boundary
     if((get_ypos() + get_length()) < GetScreenHeight())
         return true;
     

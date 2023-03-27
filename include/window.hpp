@@ -9,13 +9,10 @@ class Window
         Window();
         ~Window();
 
-        // void                start_game();
-
     private:
-        
-        //other private class variables
-        int                 m_video_width = 640;
-        int                 m_video_height = 480;
+
+        int                 m_width = 1000;
+        int                 m_height = 600;
 
 
 };

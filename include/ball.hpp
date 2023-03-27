@@ -2,6 +2,7 @@
 #define BALL_HPP
 
 #include <iostream>
+
 #include "raylib.h"
 
 class Ball
@@ -10,7 +11,6 @@ class Ball
         Ball();
         ~Ball();
 
-        //testing: remove later
         void                draw_ball();
         void                move_ball();
         

@@ -22,9 +22,7 @@ void Game::run_game()
     m_player2.move_paddle(2);
 
     collision_detect();
-
     keep_score();
-
 }
 
 void Game::collision_detect()

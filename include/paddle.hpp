@@ -1,6 +1,8 @@
 #ifndef PADDLE_HPP
 #define PADDLE_HPP
 
+#define PADDING 50
+
 #include <iostream>
 #include "raylib.h"
 
@@ -39,7 +41,6 @@ class Paddle
 
     private:
         
-        //other private class variables
         float                 m_length;
         float                 m_width;
         float                 m_xpos;
