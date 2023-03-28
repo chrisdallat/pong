@@ -1,5 +1,6 @@
 #include "paddle.hpp"
 
+
 Paddle::Paddle()
 {
     std::cout << "Default constructor: Paddle" << std::endl;
@@ -17,7 +18,6 @@ Paddle::Paddle(int player)
         m_xpos = PADDING;
     if(player == 2)
         m_xpos = GetScreenWidth() - PADDING;
-
 }
 
 Paddle::~Paddle() 
@@ -27,27 +27,67 @@ Paddle::~Paddle()
 
 void Paddle::draw_paddle()
 {
-    DrawRectanglePro(getRect(),Vector2{5,50}, m_rotation, WHITE);
+    DrawRectangleRec(getRect(), WHITE);
 }
 
 void Paddle::move_paddle(int player)
 {   
     draw_paddle();
-    set_rotation(35.0);
     
     if(player == 1)
     {
         if(IsKeyDown(KEY_W) && within_upper())
+        {
+            change_speed(KEY_W);
             set_ypos(get_yspeed() * -1);
+        }
         else if(IsKeyDown(KEY_S) && within_lower())
-            set_ypos(get_yspeed());  
+        {
+            change_speed(KEY_S);
+            set_ypos(get_yspeed());
+        }      
+        else 
+            m_last_key = 0;
     }
     if(player == 2)
     {
         if(IsKeyDown(KEY_UP) && within_upper())
+        {
+            change_speed(KEY_UP);
             set_ypos(get_yspeed() * -1);
+        }
         else if(IsKeyDown(KEY_DOWN) && within_lower())
-            set_ypos(get_yspeed());  
+        {
+            change_speed(KEY_DOWN);
+            set_ypos(get_yspeed()); 
+        }
+        else
+            m_last_key = 0; 
+    }
+}
+
+void Paddle::change_speed(int key)
+{
+    time_key(key);
+    if(m_timer > 10)
+    {
+        set_yspeed(HOLD_SPEED * get_yspeed());
+        m_timer = 0;
+    }
+    m_last_key = key;
+}
+
+void Paddle::time_key(int key)
+{
+    if(m_last_key == key)
+    {
+        std::cout << "m_timer =" << m_timer << std::endl;
+        m_timer +=1;
+    }
+    else
+    {
+        m_timer = 0;
+        set_yspeed(DEFAULT_SPEED);
     }
 }
 
@@ -109,16 +149,6 @@ void Paddle::set_ypos(int speed)
 	m_ypos += speed;
 }
 
-float Paddle::get_rotation()
-{
-    return m_rotation;
-}
-
-void Paddle::set_rotation(float degrees)
-{
-    m_rotation = degrees;
-}
-
 int Paddle::get_xspeed()
 {
     return m_xspeed;
@@ -143,4 +173,5 @@ Rectangle Paddle::getRect()
 {
     return Rectangle{get_xpos(), get_ypos(), get_width(), get_length()};
 }
+
 

@@ -2,8 +2,13 @@
 #define PADDLE_HPP
 
 #define PADDING 50
+#define DEFAULT_SPEED 5
+#define HOLD_SPEED 1.4
 
 #include <iostream>
+#include <cmath>
+#include <vector>
+
 #include "raylib.h"
 
 class Paddle 
@@ -15,6 +20,8 @@ class Paddle
 
         void                draw_paddle();
         void                move_paddle(int player);
+        void                change_speed(int key);
+        void                time_key(int key);
 
         bool                within_upper();
         bool                within_lower();
@@ -31,9 +38,6 @@ class Paddle
         float               get_ypos();
         void                set_ypos(int speed);
 
-        float               get_rotation();
-        void                set_rotation(float degrees);
-
         int                 get_xspeed();
         void                set_xspeed(int speed); 
         
@@ -48,11 +52,11 @@ class Paddle
         float                   m_width;
         float                   m_xpos;
         float                   m_ypos;
-        float                   m_rotation;
         int                     m_xspeed;
         int                     m_yspeed;
-              
-
+        int                     m_last_key;
+        bool                    m_key_pressed;
+        int                     m_timer;
 
 };
 
