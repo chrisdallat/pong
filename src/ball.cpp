@@ -3,11 +3,11 @@
 Ball::Ball() 
 {
     std::cout << "Initialising Ball Object" << std::endl;
-    m_xpos = GetScreenWidth() / 2;
+    m_xpos = GetScreenWidth() - 51;
     m_ypos = GetScreenHeight() / 2;
-    m_xspeed = 5;
-    m_yspeed = 5;
-    m_radius = 5;
+    set_xspeed(-(DEFAULT_BALL_SPEED));
+    set_yspeed(DEFAULT_BALL_SPEED);
+    set_radius(DEFAULT_BALL_RADIUS);
     reset_score();
 }
 
@@ -21,9 +21,51 @@ void Ball::draw_ball()
     DrawCircle(get_xpos(), get_ypos(), get_radius(), WHITE);
 }
 
+void Ball::draw_bounce()
+{
+    std::cout << "TODO: make bounce feeback > ball.cpp[26]" << std::endl;
+    DrawCircle(get_xpos(), get_ypos(), get_radius(), WHITE);
+}
+
+void Ball::bounce()
+{
+    int bounce_left = GetScreenWidth() / 3;
+    int bounce_right = bounce_left * 2;
+    float small_inc = (get_xspeed() * DEFAULT_BALL_INC) / bounce_left; //increment for small side
+    float large_inc = (get_xspeed() * DEFAULT_BALL_INC) / bounce_right;//increment for large side
+    float new_radius;
+
+    if((get_xpos() < bounce_left))
+        draw_bounce();
+
+    // right to left ball flight
+    if(get_xspeed() < 0 && get_xpos() > bounce_left)
+    {
+        new_radius = get_radius() + large_inc;
+        set_radius(new_radius);
+    }
+    if(get_xspeed() < 0 && get_xpos() < bounce_left)
+    {
+        new_radius = get_radius() - small_inc;
+        set_radius(new_radius);
+    }
+    // left to right ball flight
+    else if(get_xspeed() > 0 && get_xpos() > bounce_right)
+    {
+        new_radius = get_radius() + small_inc;
+        set_radius(new_radius);
+    }   
+    else if(get_xspeed() > 0 && get_xpos() < bounce_right)
+    {
+        new_radius = get_radius() - large_inc;
+        set_radius(new_radius);
+    }
+}
+
 void Ball::move_ball()
 {
     draw_ball();
+    bounce();
     // move ball withing confines of the window
     if(get_xpos() < GetScreenWidth() && get_xspeed() > 0)
         set_xpos(get_xspeed());
@@ -79,9 +121,12 @@ void Ball::set_score()
 
 void Ball::reset_ball()
 {
-    m_xpos = GetScreenWidth() / 2;
+    m_xpos = GetScreenWidth() - 50;
     m_ypos = GetScreenHeight() / 2;
-    m_xspeed *= -1;
+    // if (m_xspeed > 0)
+        m_xspeed = -5;
+    // else
+    //     m_xspeed = 5;
 }
 
 float Ball::get_xpos()
@@ -89,7 +134,7 @@ float Ball::get_xpos()
     return m_xpos;
 }
 
-void Ball::set_xpos(int speed)
+void Ball::set_xpos(float speed)
 {
     m_xpos += speed;
 }
@@ -99,37 +144,37 @@ float Ball::get_ypos()
     return m_ypos;
 }
 
-void Ball::set_ypos(int speed)
+void Ball::set_ypos(float speed)
 {
     m_ypos += speed;
 }
 
-int Ball::get_xspeed()
+float Ball::get_xspeed()
 {
     return m_xspeed;
 }
 
-void Ball::set_xspeed(int speed)
+void Ball::set_xspeed(float speed)
 {
     m_xspeed = speed;
 }
 
-int Ball::get_yspeed()
+float Ball::get_yspeed()
 {
     return m_yspeed;
 }
 
-void Ball::set_yspeed(int speed)
+void Ball::set_yspeed(float speed)
 {
     m_yspeed = speed;
 }
         
-int Ball::get_radius()
+float Ball::get_radius()
 {
     return m_radius;
 }
 
-void Ball::set_radius(int radius)
+void Ball::set_radius(float radius)
 {
 	m_radius = radius;
 }

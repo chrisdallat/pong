@@ -2,7 +2,7 @@
 #define PADDLE_HPP
 
 #define PADDING 50
-#define DEFAULT_SPEED 5
+#define DEFAULT_PADDLE_SPEED 5
 #define HOLD_SPEED 1.4
 
 #include <iostream>
@@ -44,7 +44,11 @@ class Paddle
         int                 get_yspeed();
         void                set_yspeed(int speed);
 
+        int                 get_last_key();
+
         Rectangle           getRect();
+
+
 
     private:
         

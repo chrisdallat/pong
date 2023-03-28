@@ -80,14 +80,11 @@ void Paddle::change_speed(int key)
 void Paddle::time_key(int key)
 {
     if(m_last_key == key)
-    {
-        std::cout << "m_timer =" << m_timer << std::endl;
         m_timer +=1;
-    }
     else
     {
         m_timer = 0;
-        set_yspeed(DEFAULT_SPEED);
+        set_yspeed(DEFAULT_PADDLE_SPEED);
     }
 }
 
@@ -167,6 +164,11 @@ int Paddle::get_yspeed()
 void Paddle::set_yspeed(int speed)
 {
 	m_yspeed = speed;
+}
+
+int Paddle::get_last_key()
+{
+    return m_last_key;
 }
 
 Rectangle Paddle::getRect()

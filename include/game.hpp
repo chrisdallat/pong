@@ -1,6 +1,9 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#define PLAYER_1 1
+#define PLAYER_2 2
+
 #include <string>
 #include <iostream>
 
@@ -17,6 +20,8 @@ class Game
 
         void                run_game();
         void                collision_detect();
+        void                alter_trajectory(int player);
+        void                change_speeds(float x, float y);
         void                keep_score();
 
     private:

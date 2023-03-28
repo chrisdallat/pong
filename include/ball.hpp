@@ -1,6 +1,10 @@
 #ifndef BALL_HPP
 #define BALL_HPP
 
+#define DEFAULT_BALL_RADIUS 15
+#define DEFAULT_BALL_SPEED 3
+#define DEFAULT_BALL_INC 10
+
 #include <iostream>
 
 #include "raylib.h"
@@ -12,6 +16,8 @@ class Ball
         ~Ball();
 
         void                draw_ball();
+        void                draw_bounce();
+        void                bounce();
         void                move_ball();
         
         int                 get_score1();
@@ -25,19 +31,19 @@ class Ball
         void                reset_ball();
 
         float               get_xpos();
-        void                set_xpos(int speed);
+        void                set_xpos(float speed);
 
         float               get_ypos();
-        void                set_ypos(int speed);
+        void                set_ypos(float speed);
 
-        int                 get_xspeed();
-        void                set_xspeed(int speed);
+        float               get_xspeed();
+        void                set_xspeed(float speed);
 
-        int                 get_yspeed();
-        void                set_yspeed(int speed);
+        float               get_yspeed();
+        void                set_yspeed(float speed);
         
-        int                 get_radius();
-        void                set_radius(int radius);
+        float               get_radius();
+        void                set_radius(float radius);
 
     private:
 
@@ -46,9 +52,9 @@ class Ball
         
         float               m_xpos;
         float               m_ypos;
-        int                 m_xspeed;
-        int                 m_yspeed;   
-        int                 m_radius;
+        float               m_xspeed;
+        float               m_yspeed;   
+        float               m_radius;
 
 };
 
