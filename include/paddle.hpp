@@ -31,6 +31,9 @@ class Paddle
         float               get_ypos();
         void                set_ypos(int speed);
 
+        float               get_rotation();
+        void                set_rotation(float degrees);
+
         int                 get_xspeed();
         void                set_xspeed(int speed); 
         
@@ -41,12 +44,14 @@ class Paddle
 
     private:
         
-        float                 m_length;
-        float                 m_width;
-        float                 m_xpos;
-        float                 m_ypos;
-        int                 m_xspeed;
-        int                 m_yspeed;      
+        float                   m_length;
+        float                   m_width;
+        float                   m_xpos;
+        float                   m_ypos;
+        float                   m_rotation;
+        int                     m_xspeed;
+        int                     m_yspeed;
+              
 
 
 };

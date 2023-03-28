@@ -27,12 +27,13 @@ Paddle::~Paddle()
 
 void Paddle::draw_paddle()
 {
-    DrawRectangleRec(getRect(), WHITE);
+    DrawRectanglePro(getRect(),Vector2{5,50}, m_rotation, WHITE);
 }
 
 void Paddle::move_paddle(int player)
 {   
     draw_paddle();
+    set_rotation(35.0);
     
     if(player == 1)
     {
@@ -106,6 +107,16 @@ float Paddle::get_ypos()
 void Paddle::set_ypos(int speed)
 {
 	m_ypos += speed;
+}
+
+float Paddle::get_rotation()
+{
+    return m_rotation;
+}
+
+void Paddle::set_rotation(float degrees)
+{
+    m_rotation = degrees;
 }
 
 int Paddle::get_xspeed()
