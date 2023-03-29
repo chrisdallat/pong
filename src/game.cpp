@@ -97,10 +97,10 @@ void Game::serve()
         m_ball.serve_ball_position(m_player1.get_xpos() + DEFAULT_BALL_RADIUS + DEFAULT_PADDLE_WIDTH, m_player1.get_ypos() + (DEFAULT_PADDLE_LENGTH/2));
         if(IsKeyDown(KEY_D))
         {
-            m_last_serve = 1;
             m_ball.set_xspeed(DEFAULT_BALL_XSPEED);
-            m_ball.set_yspeed(DEFAULT_BALL_YSPEED);
+            serve_direction(PLAYER_1);
             m_in_play = true;
+            m_last_serve = 1;
         }
     }
     else if (m_last_serve == 1)
@@ -108,13 +108,30 @@ void Game::serve()
         m_ball.serve_ball_position(m_player2.get_xpos() - DEFAULT_BALL_RADIUS, m_player2.get_ypos() + (DEFAULT_PADDLE_LENGTH/2));
         if(IsKeyDown(KEY_LEFT))
         {
-            m_last_serve = 2;
             m_ball.set_xspeed(-(DEFAULT_BALL_XSPEED));
-            m_ball.set_yspeed(DEFAULT_BALL_YSPEED);
+            serve_direction(PLAYER_2);
             m_in_play = true;
+            m_last_serve = 2;
         }
     }
-    
+}
+
+void Game::serve_direction(int player)
+{
+    if(player == 1)
+    {
+        if(m_player1.get_last_key() == KEY_W)
+            m_ball.set_yspeed(-(DEFAULT_BALL_YSPEED));
+        if(m_player1.get_last_key() == KEY_S)
+            m_ball.set_yspeed(DEFAULT_BALL_YSPEED);
+    }
+    if(player == 2)
+    {
+        if(m_player2.get_last_key() == KEY_UP)
+            m_ball.set_yspeed(-(DEFAULT_BALL_YSPEED));
+        if(m_player2.get_last_key() == KEY_DOWN)
+            m_ball.set_yspeed(DEFAULT_BALL_YSPEED);
+    }
 }
 
 

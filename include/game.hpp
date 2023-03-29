@@ -24,6 +24,7 @@ class Game
         void                change_speeds(float x, float y);
         void                keep_score();
         void                serve();
+        void                serve_direction(int player);
 
     private:
         

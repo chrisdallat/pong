@@ -22,12 +22,13 @@ Paddle::Paddle(int player)
 
 Paddle::~Paddle() 
 {
-    std::cout << "Destroying Paddle" << std::endl;
+    std::cout << "Destroying PLAYER" << std::endl;
 }
 
 void Paddle::draw_paddle()
 {
-    DrawRectangleRec(getRect(), WHITE);
+    // DrawRectangleRec(getRect(), WHITE);
+    DrawRectangleGradientEx(getRect(), WHITE, WHITE, DARKGRAY, DARKGRAY);
 }
 
 void Paddle::move_paddle(int player)
