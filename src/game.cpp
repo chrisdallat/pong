@@ -55,16 +55,16 @@ void Game::alter_trajectory(int player)
 
     //player 1 going with the ball angle
     if(player == 1 &&(m_player1.get_last_key() == KEY_W && m_ball.get_yspeed() < 0 || m_player1.get_last_key() == KEY_S && m_ball.get_yspeed() > 0))
-        change_speeds(1.1, 1.3);
+        change_speeds(0.8, 1.4);
     //player 1 going against ball angle
     if(player == 1 &&(m_player1.get_last_key() == KEY_S && m_ball.get_yspeed() < 0 || m_player1.get_last_key() == KEY_W && m_ball.get_yspeed() > 0))
-        change_speeds(1.3, -0.8);
+        change_speeds(1.5, -0.6);
     //player 2 going with ball angle
     if(player == 2 &&(m_player2.get_last_key() == KEY_UP && m_ball.get_yspeed() < 0 || m_player2.get_last_key() == KEY_DOWN && m_ball.get_yspeed() > 0))
-        change_speeds(1.1, 1.3);
+        change_speeds(0.8, 1.4);
     //player 2 going against ball angle
-    if(player == 1 &&(m_player2.get_last_key() == KEY_DOWN && m_ball.get_yspeed() < 0 || m_player2.get_last_key() == KEY_UP && m_ball.get_yspeed() > 0))
-        change_speeds(1.3, -0.8);
+    if(player == 2 &&(m_player2.get_last_key() == KEY_DOWN && m_ball.get_yspeed() < 0 || m_player2.get_last_key() == KEY_UP && m_ball.get_yspeed() > 0))
+        change_speeds(1.5, -0.6);
 }
 
 void Game::change_speeds(float x, float y)
