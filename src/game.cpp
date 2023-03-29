@@ -16,16 +16,15 @@ Game::~Game()
 
 void Game::run_game()
 {   
-    m_ball.move_ball();
+    if(!m_in_play)
+        serve();
 
+    m_ball.move_ball();
     m_player1.move_paddle(PLAYER_1);
     m_player2.move_paddle(PLAYER_2);
 
     collision_detect();
     keep_score();
-
-    if(!m_in_play)
-        serve();
 }
 
 void Game::collision_detect()
@@ -95,7 +94,7 @@ void Game::serve()
     if(m_last_serve == 2)
     {
         m_ball.serve_ball_position(m_player1.get_xpos() + DEFAULT_BALL_RADIUS + DEFAULT_PADDLE_WIDTH, m_player1.get_ypos() + (DEFAULT_PADDLE_LENGTH/2));
-        if(IsKeyDown(KEY_D))
+        if(IsKeyDown(KEY_SPACE))
         {
             m_ball.set_xspeed(DEFAULT_BALL_XSPEED);
             serve_direction(PLAYER_1);
@@ -106,7 +105,7 @@ void Game::serve()
     else if (m_last_serve == 1)
     {
         m_ball.serve_ball_position(m_player2.get_xpos() - DEFAULT_BALL_RADIUS, m_player2.get_ypos() + (DEFAULT_PADDLE_LENGTH/2));
-        if(IsKeyDown(KEY_LEFT))
+        if(IsKeyDown(KEY_ENTER))
         {
             m_ball.set_xspeed(-(DEFAULT_BALL_XSPEED));
             serve_direction(PLAYER_2);

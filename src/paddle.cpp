@@ -3,12 +3,11 @@
 
 Paddle::Paddle()
 {
-    std::cout << "Default constructor: Paddle" << std::endl;
+
 }
 
 Paddle::Paddle(int player)
 {
-    std::cout << "Initialising Paddle" << std::endl;
     set_length(DEFAULT_PADDLE_LENGTH);
     set_width(DEFAULT_PADDLE_WIDTH);
     set_yspeed(DEFAULT_PADDLE_SPEED);
@@ -22,12 +21,11 @@ Paddle::Paddle(int player)
 
 Paddle::~Paddle() 
 {
-    std::cout << "Destroying PLAYER" << std::endl;
+
 }
 
 void Paddle::draw_paddle()
 {
-    // DrawRectangleRec(getRect(), WHITE);
     DrawRectangleGradientEx(getRect(), WHITE, WHITE, DARKGRAY, DARKGRAY);
 }
 

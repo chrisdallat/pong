@@ -2,7 +2,6 @@
 
 Ball::Ball() 
 {
-    std::cout << "Initialising Ball Object" << std::endl;
     m_xpos = GetScreenWidth() - 51;
     m_ypos = GetScreenHeight() / 2;
     m_bounce_ypos = -1;
@@ -14,7 +13,6 @@ Ball::Ball()
 
 Ball::~Ball() 
 {
-    std::cout << "Destroying Ball" << std::endl;
 
 }
 void Ball::draw_ball()
@@ -29,7 +27,6 @@ void Ball::draw_bounce()
     {
         if(m_bounce_ypos >= 0)
         {
-
             DrawCircle(m_bounce_left, m_bounce_ypos, get_radius() + 5, GRAY);
             DrawCircle(m_bounce_left, m_bounce_ypos, get_radius() + 3, BLACK);
             DrawCircleGradient(get_xpos(), get_ypos(), get_radius(), WHITE, DARKGRAY);//game ball
@@ -57,16 +54,15 @@ void Ball::draw_bounce()
         }
     }
     else
-    {
         m_bounce_ypos = -1;
-    }
 
 }
 
 void Ball::bounce()
 {
-    float bounce_to_hit_inc = (get_xspeed() * (DEFAULT_BALL_RADIUS - DEFAULT_BALL_BOUNCE) / (m_bounce_left - 50)); //increment for small side
-    float peak_to_bounce_inc = ((get_xspeed() * (DEFAULT_BALL_PEAK - DEFAULT_BALL_BOUNCE)) / m_bounce_left);//increment for large side
+    //increment for radius increase/decreases
+    float bounce_to_hit_inc = (get_xspeed() * (DEFAULT_BALL_RADIUS - DEFAULT_BALL_BOUNCE) / (m_bounce_left - 50));
+    float peak_to_bounce_inc = ((get_xspeed() * (DEFAULT_BALL_PEAK - DEFAULT_BALL_BOUNCE)) / m_bounce_left);
     float hit_to_peak_inc = ((get_xspeed() * (DEFAULT_BALL_PEAK - DEFAULT_BALL_RADIUS)) / (m_bounce_left - 50));
     float new_radius;
 

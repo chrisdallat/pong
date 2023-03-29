@@ -4,8 +4,6 @@
 
 Window::Window() 
 {
-    std::cout << "Initialising Window Object" << std::endl;
-
     InitWindow(m_width, m_height, "PONG");
     SetWindowState(FLAG_VSYNC_HINT);
 
@@ -16,7 +14,6 @@ Window::Window()
 		BeginDrawing();
 			ClearBackground(BLACK);
             DrawRectangle(GetScreenWidth()/2, 40, 2, GetScreenHeight(), WHITE);
-
             game.run_game();
 		EndDrawing();
 	}
@@ -24,8 +21,6 @@ Window::Window()
 
 Window::~Window() 
 {
-    std::cout << "Closing Window: Deconstructor" << std::endl;
-
     CloseWindow();
 }
 
