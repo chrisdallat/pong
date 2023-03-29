@@ -3,6 +3,8 @@
 
 #define PADDING 50
 #define DEFAULT_PADDLE_SPEED 5
+#define DEFAULT_PADDLE_LENGTH 100
+#define DEFAULT_PADDLE_WIDTH 10
 #define HOLD_SPEED 1.4
 
 #include <iostream>

@@ -5,8 +5,9 @@ Ball::Ball()
     std::cout << "Initialising Ball Object" << std::endl;
     m_xpos = GetScreenWidth() - 51;
     m_ypos = GetScreenHeight() / 2;
-    set_xspeed(-(DEFAULT_BALL_SPEED));
-    set_yspeed(DEFAULT_BALL_SPEED);
+    m_bounce_ypos = -1;
+    set_xspeed(-(DEFAULT_BALL_XSPEED));
+    set_yspeed(DEFAULT_BALL_YSPEED);
     set_radius(DEFAULT_BALL_RADIUS);
     reset_score();
 }
@@ -23,41 +24,84 @@ void Ball::draw_ball()
 
 void Ball::draw_bounce()
 {
-    std::cout << "TODO: make bounce feeback > ball.cpp[26]" << std::endl;
-    DrawCircle(get_xpos(), get_ypos(), get_radius(), WHITE);
+    // if ball is going correct direction and within bounce zone.
+    if(((get_xspeed() < 0) && (get_xpos() > m_bounce_left - 40) && (get_xpos() < m_bounce_left)))
+    {
+        if(m_bounce_ypos >= 0)
+        {
+
+            DrawCircle(m_bounce_left, m_bounce_ypos, get_radius() + 5, GRAY);
+            DrawCircle(m_bounce_left, m_bounce_ypos, get_radius() + 3, BLACK);
+            DrawCircle(get_xpos(), get_ypos(), get_radius(), WHITE);//game ball
+            return;
+        }
+        else
+        {
+            m_bounce_ypos = get_ypos();
+            return;
+        }
+    }
+    if((get_xspeed() > 0) && (get_xpos() > m_bounce_right) && (get_xpos() < m_bounce_right + 40))
+    {
+        if(m_bounce_ypos >= 0)
+        {
+            DrawCircle(m_bounce_right, m_bounce_ypos, get_radius() + 5, GRAY);
+            DrawCircle(m_bounce_right, m_bounce_ypos, get_radius() + 3, BLACK);
+            DrawCircle(get_xpos(), get_ypos(), get_radius(), WHITE);//game ball
+            return;
+        }
+        else
+        {
+            m_bounce_ypos = get_ypos();
+            return;
+        }
+    }
+    else
+    {
+        m_bounce_ypos = -1;
+    }
+
 }
 
 void Ball::bounce()
 {
-    int bounce_left = GetScreenWidth() / 3;
-    int bounce_right = bounce_left * 2;
-    float small_inc = (get_xspeed() * DEFAULT_BALL_INC) / bounce_left; //increment for small side
-    float large_inc = (get_xspeed() * DEFAULT_BALL_INC) / bounce_right;//increment for large side
+    float bounce_to_hit_inc = (get_xspeed() * (DEFAULT_BALL_RADIUS - DEFAULT_BALL_BOUNCE) / (m_bounce_left - 50)); //increment for small side
+    float peak_to_bounce_inc = ((get_xspeed() * (DEFAULT_BALL_PEAK - DEFAULT_BALL_BOUNCE)) / m_bounce_left);//increment for large side
+    float hit_to_peak_inc = ((get_xspeed() * (DEFAULT_BALL_PEAK - DEFAULT_BALL_RADIUS)) / (m_bounce_left - 50));
     float new_radius;
 
-    if((get_xpos() < bounce_left))
-        draw_bounce();
+    draw_bounce();
 
     // right to left ball flight
-    if(get_xspeed() < 0 && get_xpos() > bounce_left)
+    if(get_xspeed() < 0 && get_xpos() > m_bounce_right)
     {
-        new_radius = get_radius() + large_inc;
+        new_radius = get_radius() - hit_to_peak_inc;
         set_radius(new_radius);
     }
-    if(get_xspeed() < 0 && get_xpos() < bounce_left)
+    else if(get_xspeed() < 0 && get_xpos() < m_bounce_right && get_xpos() > m_bounce_left)
     {
-        new_radius = get_radius() - small_inc;
+        new_radius = get_radius() + peak_to_bounce_inc;
+        set_radius(new_radius);
+    }
+    else if(get_xspeed() < 0 && get_xpos() < m_bounce_left)
+    {
+        new_radius = get_radius() - bounce_to_hit_inc;
         set_radius(new_radius);
     }
     // left to right ball flight
-    else if(get_xspeed() > 0 && get_xpos() > bounce_right)
+    else if(get_xspeed() > 0 && get_xpos() < m_bounce_left)
     {
-        new_radius = get_radius() + small_inc;
+        new_radius = get_radius() + hit_to_peak_inc;
         set_radius(new_radius);
     }   
-    else if(get_xspeed() > 0 && get_xpos() < bounce_right)
+    else if(get_xspeed() > 0 && get_xpos() < m_bounce_right)
     {
-        new_radius = get_radius() - large_inc;
+        new_radius = get_radius() - peak_to_bounce_inc;
+        set_radius(new_radius);
+    }
+    else if(get_xspeed() > 0 && get_xpos() > m_bounce_right)
+    {
+        new_radius = get_radius() + bounce_to_hit_inc;
         set_radius(new_radius);
     }
 }
@@ -74,7 +118,6 @@ void Ball::move_ball()
     else
     {
         set_score();
-        reset_ball();
     }
 
     if(get_ypos() < GetScreenHeight() && get_yspeed() > 0)
@@ -111,22 +154,21 @@ void Ball::reset_score()
     m_player2_score = 0;
 }
 
+void Ball::serve_ball_position(float x, float y)
+{
+    m_xspeed = 0;
+    m_yspeed = 0;
+    set_radius(DEFAULT_BALL_RADIUS);
+    m_xpos = x;
+    m_ypos = y;
+}
+
 void Ball::set_score()
 {
     if(get_xspeed() > 0)
         point_player1();
     if(get_xspeed() < 0)
         point_player2();
-}
-
-void Ball::reset_ball()
-{
-    m_xpos = GetScreenWidth() - 50;
-    m_ypos = GetScreenHeight() / 2;
-    // if (m_xspeed > 0)
-        m_xspeed = -5;
-    // else
-    //     m_xspeed = 5;
 }
 
 float Ball::get_xpos()

@@ -6,6 +6,7 @@ Game::Game()
 {
     m_player1 = Paddle(PLAYER_1);
     m_player2 = Paddle(PLAYER_2);
+    m_game_points = 0;
 }
 
 Game::~Game() 
@@ -21,7 +22,13 @@ void Game::run_game()
     m_player2.move_paddle(PLAYER_2);
 
     collision_detect();
-    keep_score();
+    if(keep_score() > m_game_points)
+    {
+        m_in_play = false;
+        m_game_points++;
+    }
+    if(!m_in_play)
+        serve();
 }
 
 void Game::collision_detect()
@@ -71,13 +78,42 @@ void Game::change_speeds(float x, float y)
     }
 }
 
-void Game::keep_score()
+int Game::keep_score()
 {
     std::string score1 = std::to_string(m_ball.get_score1());
     std::string score2 = std::to_string(m_ball.get_score2());
     std::string score_string = score1 + " : " + score2;
     int offset = (GetScreenWidth() / 2) - (MeasureText(score_string.c_str(), 20) / 2);
     DrawText(score_string.c_str(), offset, 10, 20, WHITE);
+
+    return m_ball.get_score1() + m_ball.get_score2();
+}
+
+void Game::serve()
+{
+    if(m_last_serve == 2)
+    {
+        m_ball.serve_ball_position(m_player1.get_xpos() + DEFAULT_BALL_RADIUS + DEFAULT_PADDLE_WIDTH, m_player1.get_ypos() + (DEFAULT_PADDLE_LENGTH/2));
+        if(IsKeyDown(KEY_D))
+        {
+            m_last_serve = 1;
+            m_ball.set_xspeed(DEFAULT_BALL_XSPEED);
+            m_ball.set_yspeed(DEFAULT_BALL_YSPEED);
+            m_in_play = true;
+        }
+    }
+    else if (m_last_serve == 1)
+    {
+        m_ball.serve_ball_position(m_player2.get_xpos() - DEFAULT_BALL_RADIUS, m_player2.get_ypos() + (DEFAULT_PADDLE_LENGTH/2));
+        if(IsKeyDown(KEY_LEFT))
+        {
+            m_last_serve = 2;
+            m_ball.set_xspeed(-(DEFAULT_BALL_XSPEED));
+            m_ball.set_yspeed(DEFAULT_BALL_YSPEED);
+            m_in_play = true;
+        }
+    }
+    
 }
 
 

@@ -9,9 +9,9 @@ Paddle::Paddle()
 Paddle::Paddle(int player)
 {
     std::cout << "Initialising Paddle" << std::endl;
-    set_length(100);
-    set_width(10);
-    set_yspeed(5);
+    set_length(DEFAULT_PADDLE_LENGTH);
+    set_width(DEFAULT_PADDLE_WIDTH);
+    set_yspeed(DEFAULT_PADDLE_SPEED);
     m_ypos = GetScreenHeight()/2 - PADDING;
 
     if(player == 1)

@@ -22,7 +22,8 @@ class Game
         void                collision_detect();
         void                alter_trajectory(int player);
         void                change_speeds(float x, float y);
-        void                keep_score();
+        int                 keep_score();
+        void                serve();
 
     private:
         
@@ -30,7 +31,11 @@ class Game
         Paddle              m_player1;
         Paddle              m_player2;
 
+        bool                m_in_play = false;
         bool                m_exit = false;
+        int                 m_game_points;
+        int                 m_last_serve;
+        
 };
 
 #endif
