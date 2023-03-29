@@ -19,7 +19,7 @@ Ball::~Ball()
 }
 void Ball::draw_ball()
 {
-    DrawCircle(get_xpos(), get_ypos(), get_radius(), WHITE);
+    DrawCircleGradient(get_xpos(), get_ypos(), get_radius(), WHITE, DARKGRAY);
 }
 
 void Ball::draw_bounce()
@@ -32,7 +32,7 @@ void Ball::draw_bounce()
 
             DrawCircle(m_bounce_left, m_bounce_ypos, get_radius() + 5, GRAY);
             DrawCircle(m_bounce_left, m_bounce_ypos, get_radius() + 3, BLACK);
-            DrawCircle(get_xpos(), get_ypos(), get_radius(), WHITE);//game ball
+            DrawCircleGradient(get_xpos(), get_ypos(), get_radius(), WHITE, DARKGRAY);//game ball
             return;
         }
         else

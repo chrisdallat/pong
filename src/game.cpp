@@ -11,7 +11,7 @@ Game::Game()
 
 Game::~Game() 
 {
-    std::cout << "Closing Game: Deconstructor" << std::endl;
+    std::cout << "Closing Pong!" << std::endl;
 }
 
 void Game::run_game()
@@ -22,11 +22,8 @@ void Game::run_game()
     m_player2.move_paddle(PLAYER_2);
 
     collision_detect();
-    if(keep_score() > m_game_points)
-    {
-        m_in_play = false;
-        m_game_points++;
-    }
+    keep_score();
+
     if(!m_in_play)
         serve();
 }
@@ -78,7 +75,7 @@ void Game::change_speeds(float x, float y)
     }
 }
 
-int Game::keep_score()
+void Game::keep_score()
 {
     std::string score1 = std::to_string(m_ball.get_score1());
     std::string score2 = std::to_string(m_ball.get_score2());
@@ -86,7 +83,11 @@ int Game::keep_score()
     int offset = (GetScreenWidth() / 2) - (MeasureText(score_string.c_str(), 20) / 2);
     DrawText(score_string.c_str(), offset, 10, 20, WHITE);
 
-    return m_ball.get_score1() + m_ball.get_score2();
+    if((m_ball.get_score1() + m_ball.get_score2()) > m_game_points)
+    {
+        m_in_play = false;
+        m_game_points++;
+    }
 }
 
 void Game::serve()

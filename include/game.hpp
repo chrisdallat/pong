@@ -22,7 +22,7 @@ class Game
         void                collision_detect();
         void                alter_trajectory(int player);
         void                change_speeds(float x, float y);
-        int                 keep_score();
+        void                keep_score();
         void                serve();
 
     private:
