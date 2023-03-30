@@ -1,5 +1,7 @@
 #### PONG
 
+Pong clone in C++ using raylib game library, and python GUI using PyQT
+
 from /pong run current build after installing dependencies with:
 
 ./build.sh --run pong

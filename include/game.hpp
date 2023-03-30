@@ -35,7 +35,7 @@ class Game
         bool                m_in_play = false;
         bool                m_exit = false;
         int                 m_game_points;
-        int                 m_last_serve;
+        int                 m_last_serve = 1;
         
 };
 

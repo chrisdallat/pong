@@ -3,16 +3,19 @@
 #include "include/ball.hpp"
 #include "raylib.h"
 
-//system include
 #include "unistd.h"
 #include "chrono"
 #include "thread"
 
-int main()
+int main(int ac, char *av[])
 {
-	Window w;
-
 	std::cout << "Welcome to Pong!" << std::endl;
 
+	std::vector<std::string> args(av, av+ac);
+
+  	for (size_t i = 1; i < args.size(); i++) {
+      	if (args[i] == "game")
+			Window w;
+		}
 	return 0;
 }
