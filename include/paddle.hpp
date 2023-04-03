@@ -50,8 +50,6 @@ class Paddle
 
         Rectangle           getRect();
 
-
-
     private:
         
         float                   m_length;

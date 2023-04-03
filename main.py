@@ -1,9 +1,5 @@
-from PyQt6.QtWidgets import (
-    QApplication, QWidget, QPushButton, QLabel, 
-    QLineEdit, QVBoxLayout, QHBoxLayout, QGridLayout,
-)
-from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QIcon, QPixmap
+from PyQt6.QtWidgets import QApplication
+from menu import Menu
 
 import sys
 import subprocess
@@ -22,11 +18,34 @@ def run_game():
     print(result.stdout.decode())
 
 def main():
+    app = QApplication(sys.argv)
+    app.setStyleSheet("""
+        QLineEdit:focus {
+            background-color: "grey";
+        }
+        QPushButton {
+            font-size:16px;
+        }
+        QPushButton:hover { 
+            background-color: "grey";
+        }
+        QPushButton:focus { 
+            background-color: "grey";
+        }
+    """)
 
+    print("Welcome to Pong Setup!")
+
+    menu = Menu()
+    menu.show() 
+    if(menu.start == True):
+        print("start == true")
+        menu.hide()
+        compile_game()
+        run_game()
     # TODO: some sort of while loop i guess
-    compile_game()
-    run_game()
-    
+
+    sys.exit(app.exec())
 
 if __name__ == "__main__":
     main()

@@ -21,7 +21,11 @@ void Game::run_game()
 
     m_ball.move_ball();
     m_player1.move_paddle(PLAYER_1);
-    m_player2.move_paddle(PLAYER_2);
+
+    if(m_ai_player)
+        ai_paddle();
+    else
+        m_player2.move_paddle(PLAYER_2);
 
     collision_detect();
     keep_score();
@@ -102,7 +106,7 @@ void Game::serve()
             m_last_serve = 1;
         }
     }
-    else if (m_last_serve == 1)
+    else if (m_last_serve == 1 && !m_ai_player)
     {
         m_ball.serve_ball_position(m_player2.get_xpos() - DEFAULT_BALL_RADIUS, m_player2.get_ypos() + (DEFAULT_PADDLE_LENGTH/2));
         if(IsKeyDown(KEY_ENTER))
@@ -113,6 +117,8 @@ void Game::serve()
             m_last_serve = 2;
         }
     }
+    else if (m_last_serve == 1 && m_ai_player)
+        ai_serve();
 }
 
 void Game::serve_direction(int player)
@@ -132,6 +138,32 @@ void Game::serve_direction(int player)
             m_ball.set_yspeed(DEFAULT_BALL_YSPEED);
     }
 }
+
+void Game::ai_paddle()
+{
+    m_player2.draw_paddle();
+    if (m_ball.get_ypos() < m_player2.get_ypos() - 100 + (m_player2.get_length() / 2) && rand() % m_difficulty == 1) 
+        m_player2.set_ypos(m_player2.get_yspeed() * -3);
+    else if (m_ball.get_ypos() < m_player2.get_ypos() + (m_player2.get_length() / 2) && rand() % m_difficulty == 1) 
+        m_player2.set_ypos(m_player2.get_yspeed() * -2);
+    else if (m_ball.get_ypos() > m_player2.get_ypos() + 100 + (m_player2.get_length() / 2) && rand() % m_difficulty == 1)
+        m_player2.set_ypos(m_player2.get_yspeed() * 3);
+    else if (m_ball.get_ypos() > m_player2.get_ypos() + (m_player2.get_length() / 2) && rand() % m_difficulty == 1)
+        m_player2.set_ypos(m_player2.get_yspeed() * 2);
+}
+
+void Game::ai_serve()
+{
+    m_ball.serve_ball_position(m_player2.get_xpos() - DEFAULT_BALL_RADIUS, m_player2.get_ypos() + (DEFAULT_PADDLE_LENGTH/2));
+    m_ball.set_xspeed(-(DEFAULT_BALL_XSPEED));
+    if(rand() % 1 == 1)
+        m_ball.set_yspeed(-(DEFAULT_BALL_YSPEED));
+    else
+        m_ball.set_yspeed(DEFAULT_BALL_YSPEED);
+    m_in_play = true;
+    m_last_serve = 2;
+}
+
 
 
 

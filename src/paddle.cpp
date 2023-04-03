@@ -3,7 +3,7 @@
 
 Paddle::Paddle()
 {
-
+    
 }
 
 Paddle::Paddle(int player)

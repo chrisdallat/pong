@@ -13,9 +13,11 @@ int main(int ac, char *av[])
 
 	std::vector<std::string> args(av, av+ac);
 
-  	for (size_t i = 1; i < args.size(); i++) {
-      	if (args[i] == "game")
-			Window w;
-		}
+	Window w;
+
+  	// for (size_t i = 1; i < args.size(); i++) {
+    //   	if (args[i] == "game")
+	// 		Window w;
+	// 	}
 	return 0;
 }
