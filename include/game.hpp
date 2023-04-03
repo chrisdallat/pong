@@ -20,15 +20,23 @@ class Game
         Game();
         ~Game();
 
-        void                run_game();
+        int                 run_game();
         void                collision_detect();
         void                alter_trajectory(int player);
         void                change_speeds(float x, float y);
         void                keep_score();
+        int                 game_over();
+
         void                serve();
         void                serve_direction(int player);
         void                ai_paddle();
         void                ai_serve();
+
+        void                set_points_limit(int points);
+        int                 get_points_limit();
+
+        void                set_winner(int winner);
+        int                 get_winner();     
 
     private:
         
@@ -42,6 +50,8 @@ class Game
         int                 m_last_serve = 2;
         bool                m_ai_player = true;
         int                 m_difficulty = 3;
+        int                 m_points_limit = 10;
+        int                 m_winner = 0;
         
 };
 

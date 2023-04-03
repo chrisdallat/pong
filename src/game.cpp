@@ -14,7 +14,7 @@ Game::~Game()
     std::cout << "Closing Pong!" << std::endl;
 }
 
-void Game::run_game()
+int Game::run_game()
 {   
     if(!m_in_play)
         serve();
@@ -29,6 +29,9 @@ void Game::run_game()
 
     collision_detect();
     keep_score();
+    int winner = game_over();
+    set_winner(winner);
+    return get_winner();
 }
 
 void Game::collision_detect()
@@ -91,6 +94,16 @@ void Game::keep_score()
         m_in_play = false;
         m_game_points++;
     }
+}
+
+int Game::game_over()
+{
+    if(m_ball.get_score1() == get_points_limit())
+        return 1;
+    if(m_ball.get_score2() == get_points_limit())
+        return 2;
+    else 
+        return 0;
 }
 
 void Game::serve()
@@ -162,6 +175,26 @@ void Game::ai_serve()
         m_ball.set_yspeed(DEFAULT_BALL_YSPEED);
     m_in_play = true;
     m_last_serve = 2;
+}
+
+void Game::set_points_limit(int points)
+{
+    m_points_limit = points;
+}
+
+int Game::get_points_limit()
+{
+    return m_points_limit;
+}
+
+void Game::set_winner(int winner)
+{
+    m_winner = winner;
+}
+
+int Game::get_winner()
+{
+    return m_winner;
 }
 
 

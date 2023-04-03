@@ -2,11 +2,13 @@
 #define WINDOW_HPP
 
 #include <iostream>
+#include <string>
 
 class Window
 {
     public:
         Window();
+        Window(std::string players, std::string powerups, std::string difficulty, std::string points);
         ~Window();
 
     private:

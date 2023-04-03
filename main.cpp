@@ -9,15 +9,10 @@
 
 int main(int ac, char *av[])
 {
-	std::cout << "Welcome to Pong!" << std::endl;
-
 	std::vector<std::string> args(av, av+ac);
 
-	Window w;
+	std::cout << "args: " << args[1] << args[2] << args[3] << args[4] << std::endl;
+	Window w = Window(args[1], args[2], args[3], args[4]);
 
-  	// for (size_t i = 1; i < args.size(); i++) {
-    //   	if (args[i] == "game")
-	// 		Window w;
-	// 	}
 	return 0;
 }

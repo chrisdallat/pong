@@ -23,10 +23,10 @@ def main():
 
     menu = Menu()
     menu.show()
-    print("Welcome to Pong Setup!")
+    print("Welcome to Pong!")
 
     app.exec()
-    print("here!")
+    print("Exited Game!")
 
 if __name__ == "__main__":
     main()
