@@ -21,7 +21,6 @@ Window::Window()
 
 Window::Window(std::string players, std::string powerups, std::string difficulty, std::string points)
 {
-    std::cout << "creating class" << std::endl;
     InitWindow(m_width, m_height, "PONG");
     SetWindowState(FLAG_VSYNC_HINT);
 
