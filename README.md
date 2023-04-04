@@ -1,4 +1,4 @@
-#### PONG
+# PONG
 
 Pong clone in C++ using raylib game library, and python GUI using PyQT
 
