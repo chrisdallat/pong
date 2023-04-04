@@ -9,6 +9,15 @@ from /pong run current build after installing dependencies with:
 ## Dependencies
 
 'brew install raylib'
+'brew install PyQt6'
+
+## Game Menu
+
+<img src="./images/pong_menu.png" width="400" />
+
+## Game Window
+
+<img src="./images/pong_game.png" width="600" />
 
 ## Controls
 
