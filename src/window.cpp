@@ -25,9 +25,7 @@ Window::Window(std::string players, std::string powerups, std::string difficulty
     InitWindow(m_width, m_height, "PONG");
     SetWindowState(FLAG_VSYNC_HINT);
 
-    Game game;
-    game.set_points_limit(stoi(points));
-    std::cout << "points limit: " << game.get_points_limit() << std::endl;
+    Game game = Game(players, powerups, difficulty, points);
 
 	while(!WindowShouldClose())
 	{
@@ -39,6 +37,7 @@ Window::Window(std::string players, std::string powerups, std::string difficulty
                 std::cout << "Winner is: PLAYER " << game.get_winner() << std::endl;
                 break;
             }
+
 		EndDrawing();
 	}
 }

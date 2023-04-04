@@ -1,9 +1,12 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#define PLAYER_1 1
-#define PLAYER_2 2
-#define PLAYER_AI 3
+#define PLAYER_1    1
+#define PLAYER_2    2
+#define PLAYER_AI   3
+#define EASY        6   
+#define MEDIUM      4
+#define HARD        2
 
 #include <string>
 #include <iostream>
@@ -18,6 +21,7 @@ class Game
 {
     public:
         Game();
+        Game(std::string players, std::string powerups, std::string difficulty, std::string points);
         ~Game();
 
         int                 run_game();
@@ -46,11 +50,14 @@ class Game
 
         bool                m_in_play = false;
         bool                m_exit = false;
-        int                 m_game_points;
+
+        int                 m_game_points = 0;
         int                 m_last_serve = 2;
+
         bool                m_ai_player = true;
-        int                 m_difficulty = 3;
-        int                 m_points_limit = 10;
+        bool                m_powerups = true;
+        int                 m_difficulty = 1;
+        int                 m_points_limit = 3;
         int                 m_winner = 0;
         
 };

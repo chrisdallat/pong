@@ -6,7 +6,32 @@ Game::Game()
 {
     m_player1 = Paddle(PLAYER_1);
     m_player2 = Paddle(PLAYER_2);
-    m_game_points = 0;
+}
+
+Game::Game(std::string players, std::string powerups, std::string difficulty, std::string points)
+{
+    std::cout << "setting game params" << std::endl;
+    m_player1 = Paddle(PLAYER_1);
+    m_player2 = Paddle(PLAYER_2);
+    
+    if(players == "1")
+        m_ai_player = true;
+    else
+        m_ai_player = false;
+
+    if(powerups == "ON")
+        m_powerups = true;
+    else
+        m_powerups = false;
+
+    if(difficulty == "EASY")
+        m_difficulty = EASY;
+    else if(difficulty == "MEDIUM")
+        m_difficulty = MEDIUM;
+    else    
+        m_difficulty = HARD;
+
+    set_points_limit(stoi(points));
 }
 
 Game::~Game() 
