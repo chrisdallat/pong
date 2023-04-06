@@ -13,7 +13,7 @@ class Winner(QtWidgets.QMainWindow):
 
     def winner_menu(self, winner):
         if(winner == 0):
-            self.winner_text.setText("")
+            self.winner_text.setText("IT LOOKS LIKE A")
             self.player_number.setText("QUIT")
         else:
             self.winner_text.setText("THE WINNER IS")
