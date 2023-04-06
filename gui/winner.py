@@ -16,4 +16,5 @@ class Winner(QtWidgets.QMainWindow):
             self.winner_text.setText("")
             self.player_number.setText("QUIT")
         else:
+            self.winner_text.setText("THE WINNER IS")
             self.player_number.setText(str(winner))
