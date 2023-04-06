@@ -19,6 +19,10 @@ from /pong run current build after installing dependencies with:
 
 <img src="./images/pong_game.png" width="600" />
 
+## Winner Window
+
+<img src="./images/pong_winner.png" width="400" />
+
 ## Controls
 
                     PLAYER 1(LEFT)      PLAYER 2(RIGHT)
