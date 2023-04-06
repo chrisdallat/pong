@@ -31,11 +31,8 @@ Window::Window(std::string players, std::string powerups, std::string difficulty
 		BeginDrawing();
 			ClearBackground(BLACK);
             DrawRectangle(GetScreenWidth()/2, 40, 2, GetScreenHeight(), WHITE);
-            if(game.run_game() > 0)
-            {
-                std::cout << "Winner is: PLAYER " << game.get_winner() << std::endl;
+            if((m_winner = game.run_game()) > 0)
                 break;
-            }
 
 		EndDrawing();
 	}
@@ -44,6 +41,11 @@ Window::Window(std::string players, std::string powerups, std::string difficulty
 Window::~Window() 
 {
     CloseWindow();
+}
+
+int Window::get_winner()
+{
+    return m_winner;
 }
 
 

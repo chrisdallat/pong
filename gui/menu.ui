@@ -257,7 +257,7 @@
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>310</y>
+      <y>320</y>
       <width>191</width>
       <height>51</height>
      </rect>
@@ -272,7 +272,6 @@
     </property>
    </widget>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

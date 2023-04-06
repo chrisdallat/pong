@@ -1,29 +1,20 @@
-from PyQt6.QtWidgets import QApplication
-from menu import Menu
-from run import *
-
 import sys
 
-def main():
-    app = QApplication(sys.argv)
-    app.setStyleSheet("""
-        QLineEdit:focus {
-            background-color: "grey";
-        }
-        QPushButton {
-            font-size:16px;
-        }
-        QPushButton:hover { 
-            background-color: "grey";
-        }
-        QPushButton:focus { 
-            background-color: "grey";
-        }
-    """)
+sys.path.append("./gui/")
+from menu import Menu
+from winner import Winner
+from run import *
 
+from PyQt6.QtWidgets import QApplication
+
+def main():
+    
+    print("Welcome to Pong!")
+
+    app = QApplication(sys.argv)
+    
     menu = Menu()
     menu.show()
-    print("Welcome to Pong!")
 
     app.exec()
     print("Exited Game!")

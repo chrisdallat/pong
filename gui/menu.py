@@ -3,27 +3,34 @@ from PyQt6 import QtWidgets, uic
 from PyQt6 import QtCore
 
 from run import *
+from winner import Winner
 
 class Menu(QtWidgets.QMainWindow):
 
-    start = False
-
     def __init__(self):
         super(Menu, self).__init__()
-        uic.loadUi('menu.ui', self)
-
+        uic.loadUi("gui/menu.ui", self)
+        
+        self.winner = Winner()
         self.start_button.clicked.connect(self.start_game)
-        #self.start_button.clicked.connect(self.close)
 
     def start_game(self):
         self.set_players()
         self.set_powerups()
         self.set_ai_difficulty()
         self.set_points_limit()
-        self.start = True
         compile_game()
-        run_game(self.get_players(), self.get_powerups(), self.get_ai_difficulty(), self.get_points_limit())
-        self.close()
+        self.hide()
+        winner = run_game(self.get_players(), self.get_powerups(), self.get_ai_difficulty(), self.get_points_limit())
+        self.show_winner_window(winner)
+
+    def show_winner_window(self, winner):
+        self.winner.winner_menu(winner)
+        self.show()
+        self.winner.show()
+
+
+
 
     def get_players(self):
         return self.players

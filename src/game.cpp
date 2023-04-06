@@ -5,12 +5,11 @@
 Game::Game() 
 {
     m_player1 = Paddle(PLAYER_1);
-    m_player2 = Paddle(PLAYER_2);
+    m_player2 = Paddle(PLAYER_2); 
 }
 
 Game::Game(std::string players, std::string powerups, std::string difficulty, std::string points)
 {
-    std::cout << "setting game params" << std::endl;
     m_player1 = Paddle(PLAYER_1);
     m_player2 = Paddle(PLAYER_2);
     
