@@ -12,6 +12,7 @@ Game::Game(std::string players, std::string powerups, std::string difficulty, st
 {
     m_player1 = Paddle(PLAYER_1);
     m_player2 = Paddle(PLAYER_2);
+    m_powerup = Powerup();
     
     if(players == "1")
         m_ai_player = true;
@@ -42,6 +43,9 @@ int Game::run_game()
 {   
     if(!m_in_play)
         serve();
+
+    //set to front somehow
+    m_powerup.draw_powerup_drop();
 
     m_ball.move_ball();
     m_player1.move_paddle(PLAYER_1);

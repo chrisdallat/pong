@@ -14,6 +14,7 @@
 
 #include "ball.hpp"
 #include "paddle.hpp"
+#include "powerup.hpp"
 
 #include "raylib.h"
 
@@ -47,6 +48,7 @@ class Game
         Ball                m_ball;
         Paddle              m_player1;
         Paddle              m_player2;
+        Powerup             m_powerup;
 
         bool                m_in_play = false;
         bool                m_exit = false;
