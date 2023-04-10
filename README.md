@@ -25,6 +25,13 @@ from /pong run game from python main after installing dependencies with:
 
 <img src="./images/pong_game.png" width="600" />
 
+## Powerups
+Powerups will display as Circles which when collided with, the powerup is activated for the player who hit it. 
+
+NOTE: Currently only 'Invisiball' powerup is active so the ball disappears after contact until the opponent returns it or it goes out. a new powerup is then dropped on the court at a random coordinate.
+
+<img src="./images/pong_powerup.png" width="600" />
+
 ## Winner Window
 
 <img src="./images/pong_winner.png" width="400" />

@@ -29,14 +29,12 @@ void Powerup::generate_xpos()
 {
     float pos = rand() % (GetScreenWidth() - 200) + (get_powerup_radius() + 50);
     set_powerup_xpos(pos); 
-    std::cout << "Powerup x_pos: " << get_powerup_xpos() << std::endl;
 }
 
 void Powerup::generate_ypos()
 {
     float pos = rand() % GetScreenHeight();
     set_powerup_ypos(pos); 
-    std::cout << "Powerup y_pos: " << get_powerup_ypos() << std::endl;
 }
 
 int Powerup::get_powerup_type()

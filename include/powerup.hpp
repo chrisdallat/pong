@@ -40,10 +40,11 @@ class Powerup
 
     private:
         
-        float   m_powerup_xpos;
-        float   m_powerup_ypos;
-        int     m_powerup_radius;
-        int     m_powerup_type;
+        float       m_powerup_xpos;
+        float       m_powerup_ypos;
+        int         m_powerup_radius;
+        int         m_powerup_type;
+        // Texture2D   m_powerup_image = LoadTexture("../images/invisiball.png");
 
 };
 
