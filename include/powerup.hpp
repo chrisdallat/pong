@@ -26,6 +26,9 @@ class Powerup
         void    generate_xpos();
         void    generate_ypos();
 
+        int     get_powerup_type();
+        void    generate_powerup_type();
+
         float   get_powerup_xpos();
         void    set_powerup_xpos(float x_pos);
 
@@ -40,6 +43,7 @@ class Powerup
         float   m_powerup_xpos;
         float   m_powerup_ypos;
         int     m_powerup_radius;
+        int     m_powerup_type;
 
 };
 

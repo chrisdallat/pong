@@ -28,6 +28,8 @@ class Game
         int                 run_game();
         void                collision_powerup();
         void                collision_detect();
+
+        void                powerup_effect();
         void                alter_trajectory(int player);
         void                change_speeds(float x, float y);
         void                keep_score();
@@ -59,6 +61,7 @@ class Game
 
         bool                m_ai_player = true;
         bool                m_powerups = true;
+        int                 m_current_powerup = 0;
         int                 m_difficulty = 1;
         int                 m_points_limit = 3;
         int                 m_winner = 0;

@@ -15,6 +15,7 @@ void Powerup::generate_new_powerup()
 {
     generate_xpos();
     generate_ypos();
+    generate_powerup_type();
     set_powerup_radius(POWERUP_MEDIUM);
 }
 
@@ -26,7 +27,7 @@ void Powerup::draw_powerup_drop()
 
 void Powerup::generate_xpos()
 {
-    float pos = rand() % (GetScreenWidth() - 200) + POWERUP_LARGE;
+    float pos = rand() % (GetScreenWidth() - 200) + (get_powerup_radius() + 50);
     set_powerup_xpos(pos); 
     std::cout << "Powerup x_pos: " << get_powerup_xpos() << std::endl;
 }
@@ -36,6 +37,25 @@ void Powerup::generate_ypos()
     float pos = rand() % GetScreenHeight();
     set_powerup_ypos(pos); 
     std::cout << "Powerup y_pos: " << get_powerup_ypos() << std::endl;
+}
+
+int Powerup::get_powerup_type()
+{
+    return m_powerup_type;
+}
+
+void Powerup::generate_powerup_type()
+{
+    // no power         0
+    // invisiball       1
+    // double/triple    2
+    // reversiball      3
+    // re-serve         4
+    // mini-paddle      5
+    // big-paddle       6
+    m_powerup_type = 1;
+    // m_powerup_type = rand() % 6 + 1;
+    std::cout << "----powerup type --> " << m_powerup_type << std::endl;
 }
 
 float Powerup::get_powerup_xpos()

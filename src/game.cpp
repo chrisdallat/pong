@@ -44,7 +44,6 @@ int Game::run_game()
     if(!m_in_play)
         serve();
 
-    //set to front somehow
     m_powerup.draw_powerup_drop();
 
     m_ball.move_ball();
@@ -57,6 +56,7 @@ int Game::run_game()
 
     collision_detect();
     collision_powerup();
+    powerup_effect();
     keep_score();
     
     set_winner(game_over());
@@ -66,8 +66,13 @@ int Game::run_game()
 void Game::collision_powerup()
 {
     if(CheckCollisionPointCircle(Vector2{m_ball.get_xpos(), m_ball.get_ypos()}, Vector2{m_powerup.get_powerup_xpos(), m_powerup.get_powerup_ypos()}, m_powerup.get_powerup_radius()))
-    {
+    {  
+        m_current_powerup = m_powerup.get_powerup_type();
         m_powerup.generate_new_powerup();
+        // if(m_powerup.get_powerup_type() == 1)
+        // {
+        //     // m_power_up.invisiball(m_ball.get_xpos(), m_ball.get_ypos());
+        // }
     }
 }
 
@@ -78,6 +83,7 @@ void Game::collision_detect()
     {
         alter_trajectory(1);
         m_ball.set_xspeed(m_ball.get_xspeed() * -1);
+        m_current_powerup = 0;
     }
 
     // player 2 collision detection
@@ -85,8 +91,15 @@ void Game::collision_detect()
     {
         alter_trajectory(2);
         m_ball.set_xspeed(m_ball.get_xspeed() * -1); 
+        m_current_powerup = 0;
     }
-}       
+}  
+
+void Game::powerup_effect()
+{
+    if(m_current_powerup == 1)
+        DrawCircle(m_ball.get_xpos(), m_ball.get_ypos(), m_ball.get_radius()*2, BLACK);
+}
 
 void Game::alter_trajectory(int player)
 {
