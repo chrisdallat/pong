@@ -3,14 +3,19 @@
 Powerup::Powerup()
 {
     std::cout << "----Generating Powerup------" << std::endl;
-    generate_xpos();
-    generate_ypos();
-    set_powerup_radius(POWERUP_MEDIUM);
+    generate_new_powerup();
 }
 
 Powerup::~Powerup()
 {
 
+}
+
+void Powerup::generate_new_powerup()
+{
+    generate_xpos();
+    generate_ypos();
+    set_powerup_radius(POWERUP_MEDIUM);
 }
 
 void Powerup::draw_powerup_drop()

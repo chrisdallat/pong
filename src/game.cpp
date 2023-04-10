@@ -56,10 +56,19 @@ int Game::run_game()
         m_player2.move_paddle(PLAYER_2);
 
     collision_detect();
+    collision_powerup();
     keep_score();
     int winner = game_over();
     set_winner(winner);
     return get_winner();
+}
+
+void Game::collision_powerup()
+{
+    if(CheckCollisionPointCircle(Vector2{m_ball.get_xpos(), m_ball.get_ypos()}, Vector2{m_powerup.get_powerup_xpos(), m_powerup.get_powerup_ypos()}, m_powerup.get_powerup_radius()))
+    {
+        m_powerup.generate_new_powerup();
+    }
 }
 
 void Game::collision_detect()

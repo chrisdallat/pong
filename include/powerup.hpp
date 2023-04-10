@@ -19,6 +19,8 @@ class Powerup
         Powerup();
         ~Powerup();
 
+        void    generate_new_powerup();
+
         void    draw_powerup_drop();
 
         void    generate_xpos();

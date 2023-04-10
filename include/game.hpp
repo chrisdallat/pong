@@ -26,6 +26,7 @@ class Game
         ~Game();
 
         int                 run_game();
+        void                collision_powerup();
         void                collision_detect();
         void                alter_trajectory(int player);
         void                change_speeds(float x, float y);
