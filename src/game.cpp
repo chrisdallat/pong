@@ -58,8 +58,8 @@ int Game::run_game()
     collision_detect();
     collision_powerup();
     keep_score();
-    int winner = game_over();
-    set_winner(winner);
+    
+    set_winner(game_over());
     return get_winner();
 }
 
