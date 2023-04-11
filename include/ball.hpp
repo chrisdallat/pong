@@ -6,6 +6,7 @@
 #define DEFAULT_BALL_RADIUS 8
 #define DEFAULT_BALL_XSPEED 4
 #define DEFAULT_BALL_YSPEED 3
+#define PADDING 50
 
 
 #include <iostream>
@@ -21,6 +22,7 @@ class Ball
         void                draw_bounce();
         void                bounce();
         void                move_ball();
+        void                ball_radius_maintain();
         
         int                 get_score1();
         void                point_player1();

@@ -42,7 +42,13 @@ Game::~Game()
 int Game::run_game()
 {   
     if(!m_in_play)
+    {
+        //reset_paddle_sizes
+        m_player1.set_length(100);
+        m_player2.set_length(100);
         serve();
+    }
+        
 
     m_powerup.draw_powerup_drop();
 
@@ -65,14 +71,35 @@ int Game::run_game()
 
 void Game::collision_powerup()
 {
+    //can probably move the majority of this into functions to be called from Powerups object
     if(CheckCollisionPointCircle(Vector2{m_ball.get_xpos(), m_ball.get_ypos()}, Vector2{m_powerup.get_powerup_xpos(), m_powerup.get_powerup_ypos()}, m_powerup.get_powerup_radius()))
-    {  
+    {   
+        m_player1.set_length(100);
+        m_player2.set_length(100);
         m_current_powerup = m_powerup.get_powerup_type();
         m_powerup.generate_new_powerup();
-        // if(m_powerup.get_powerup_type() == 1)
-        // {
-        //     // m_power_up.invisiball(m_ball.get_xpos(), m_ball.get_ypos());
-        // }
+        if(m_powerup.get_powerup_type() == 1)
+        {
+            // m_power_up.invisiball(m_ball.get_xpos(), m_ball.get_ypos());
+        }
+        if(m_current_powerup == 2)
+            m_ball.set_xspeed(m_ball.get_xspeed() * -1);
+        if(m_current_powerup == 3)
+            m_ball.set_yspeed(m_ball.get_yspeed() * -1);
+        if(m_current_powerup == 4)
+        {
+            if(m_ball.get_xspeed() > 0)
+                m_player2.set_length(25);
+            else
+                m_player1.set_length(25);
+        }
+        if(m_current_powerup == 5)
+        {
+            if(m_ball.get_xspeed() < 0)
+                m_player2.set_length(200);
+            else
+                m_player1.set_length(200);
+        }
     }
 }
 
@@ -81,6 +108,7 @@ void Game::collision_detect()
     // player 1 collision detection
     if(CheckCollisionCircleRec(Vector2{m_ball.get_xpos(), m_ball.get_ypos()}, m_ball.get_radius(), m_player1.getRect()))
     {
+        m_ball.set_radius(DEFAULT_BALL_RADIUS);
         alter_trajectory(1);
         m_ball.set_xspeed(m_ball.get_xspeed() * -1);
         m_current_powerup = 0;
@@ -89,6 +117,7 @@ void Game::collision_detect()
     // player 2 collision detection
     if(CheckCollisionCircleRec(Vector2{m_ball.get_xpos(), m_ball.get_ypos()}, m_ball.get_radius(), m_player2.getRect()))
     {
+        m_ball.set_radius(DEFAULT_BALL_RADIUS);
         alter_trajectory(2);
         m_ball.set_xspeed(m_ball.get_xspeed() * -1); 
         m_current_powerup = 0;
@@ -98,7 +127,15 @@ void Game::collision_detect()
 void Game::powerup_effect()
 {
     if(m_current_powerup == 1)
-        DrawCircle(m_ball.get_xpos(), m_ball.get_ypos(), m_ball.get_radius()*2, BLACK);
+        DrawCircle(m_ball.get_xpos(), m_ball.get_ypos(), m_ball.get_radius()*3, BLACK);
+    if(m_current_powerup == 2)
+        std::cout << "reverse speed after collision" << std::endl;
+    if(m_current_powerup == 3)
+        std::cout << "reverse y direction" << std::endl;
+    if(m_current_powerup == 4)
+        std::cout << "enlarge player paddle" << std::endl;
+    if(m_current_powerup == 5)
+        std::cout << "shrink opponent paddle" << std::endl;
 }
 
 void Game::alter_trajectory(int player)

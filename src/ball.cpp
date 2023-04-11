@@ -61,9 +61,9 @@ void Ball::draw_bounce()
 void Ball::bounce()
 {
     //increment for radius increase/decreases
-    float bounce_to_hit_inc = (get_xspeed() * (DEFAULT_BALL_RADIUS - DEFAULT_BALL_BOUNCE) / (m_bounce_left - 50));
+    float bounce_to_hit_inc = (get_xspeed() * (DEFAULT_BALL_RADIUS - DEFAULT_BALL_BOUNCE) / (m_bounce_left - PADDING));
     float peak_to_bounce_inc = ((get_xspeed() * (DEFAULT_BALL_PEAK - DEFAULT_BALL_BOUNCE)) / m_bounce_left);
-    float hit_to_peak_inc = ((get_xspeed() * (DEFAULT_BALL_PEAK - DEFAULT_BALL_RADIUS)) / (m_bounce_left - 50));
+    float hit_to_peak_inc = ((get_xspeed() * (DEFAULT_BALL_PEAK - DEFAULT_BALL_RADIUS)) / (m_bounce_left - PADDING));
     float new_radius;
 
     draw_bounce();
@@ -106,15 +106,13 @@ void Ball::move_ball()
 {
     draw_ball();
     bounce();
-    // move ball withing confines of the window
+    ball_radius_maintain();
     if(get_xpos() < GetScreenWidth() && get_xspeed() > 0)
         set_xpos(get_xspeed());
     else if(get_xpos() > 0 && get_xspeed() < 0)   
         set_xpos(get_xspeed());
     else
-    {
         set_score();
-    }
 
     if(get_ypos() < GetScreenHeight() && get_yspeed() > 0)
         set_ypos(get_yspeed());
@@ -122,6 +120,15 @@ void Ball::move_ball()
         set_ypos(get_yspeed());
     else
         set_yspeed(get_yspeed() * -1);
+}
+
+void Ball::ball_radius_maintain()
+{
+    //for 'reversiball' powerup so the ball radius doesnt bug out.
+    //maybe no so necessary
+    float x = get_xpos();
+    if(x == PADDING || (x == GetScreenWidth() - PADDING))
+        set_radius(DEFAULT_BALL_RADIUS);
 }
 
 int Ball::get_score1()

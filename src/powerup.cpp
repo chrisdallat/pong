@@ -16,7 +16,7 @@ void Powerup::generate_new_powerup()
     generate_xpos();
     generate_ypos();
     generate_powerup_type();
-    set_powerup_radius(POWERUP_MEDIUM);
+    set_powerup_radius(POWERUP_SMALL);
 }
 
 void Powerup::draw_powerup_drop()
@@ -51,8 +51,8 @@ void Powerup::generate_powerup_type()
     // re-serve         4
     // mini-paddle      5
     // big-paddle       6
-    m_powerup_type = 1;
-    // m_powerup_type = rand() % 6 + 1;
+    
+    m_powerup_type = rand() % 5 + 1;
     std::cout << "----powerup type --> " << m_powerup_type << std::endl;
 }
 
