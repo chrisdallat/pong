@@ -1,4 +1,6 @@
 __pycache__
 gui/__pycache__
+.vscode/
 .DS_Store
 build/
+__init__.py
