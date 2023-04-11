@@ -48,9 +48,6 @@ int Game::run_game()
         m_player2.set_length(100);
         serve();
     }
-        
-
-    m_powerup.draw_powerup_drop();
 
     m_ball.move_ball();
     m_player1.move_paddle(PLAYER_1);
@@ -61,10 +58,15 @@ int Game::run_game()
         m_player2.move_paddle(PLAYER_2);
 
     collision_detect();
-    collision_powerup();
-    powerup_effect();
+
+    if(m_powerups)
+    {
+        m_powerup.draw_powerup_drop();
+        collision_powerup();
+        powerup_effect();
+    }
+
     keep_score();
-    
     set_winner(game_over());
     return get_winner();
 }
