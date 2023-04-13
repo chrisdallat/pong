@@ -10,6 +10,7 @@
 
 
 #include <iostream>
+#include "audio.hpp"
 #include "raylib.h"
 
 class Ball
@@ -50,6 +51,8 @@ class Ball
         void                set_radius(float radius);
 
     private:
+
+        Audio               m_audio;
 
         int                 m_player1_score;
         int                 m_player2_score;

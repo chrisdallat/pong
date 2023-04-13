@@ -80,14 +80,20 @@ void Game::collision_powerup()
         m_player2.set_length(100);
         m_current_powerup = m_powerup.get_powerup_type();
         m_powerup.generate_new_powerup();
-        if(m_powerup.get_powerup_type() == 1)
+        if(m_current_powerup == 1)
         {
             // m_power_up.invisiball(m_ball.get_xpos(), m_ball.get_ypos());
         }
         if(m_current_powerup == 2)
+        {
             m_ball.set_xspeed(m_ball.get_xspeed() * -1);
+            m_audio.play_bounce();
+        }
         if(m_current_powerup == 3)
+        {
             m_ball.set_yspeed(m_ball.get_yspeed() * -1);
+            m_audio.play_bounce();
+        }
         if(m_current_powerup == 4)
         {
             if(m_ball.get_xspeed() > 0)
@@ -114,6 +120,7 @@ void Game::collision_detect()
         alter_trajectory(1);
         m_ball.set_xspeed(m_ball.get_xspeed() * -1);
         m_current_powerup = 0;
+        m_audio.play_bounce();
     }
 
     // player 2 collision detection
@@ -123,6 +130,7 @@ void Game::collision_detect()
         alter_trajectory(2);
         m_ball.set_xspeed(m_ball.get_xspeed() * -1); 
         m_current_powerup = 0;
+        m_audio.play_bounce();
     }
 }  
 
@@ -199,7 +207,7 @@ void Game::serve()
 {
     if(m_last_serve == 2)
     {
-        m_ball.serve_ball_position(m_player1.get_xpos() + DEFAULT_BALL_RADIUS + DEFAULT_PADDLE_WIDTH, m_player1.get_ypos() + (DEFAULT_PADDLE_LENGTH/2));
+        m_ball.serve_ball_position(m_player1.get_xpos() + DEFAULT_BALL_RADIUS + m_player1.get_width(), m_player1.get_ypos() + (m_player1.get_length()/2));
         if(IsKeyDown(KEY_SPACE))
         {
             m_ball.set_xspeed(DEFAULT_BALL_XSPEED);
@@ -210,7 +218,7 @@ void Game::serve()
     }
     else if (m_last_serve == 1 && !m_ai_player)
     {
-        m_ball.serve_ball_position(m_player2.get_xpos() - DEFAULT_BALL_RADIUS, m_player2.get_ypos() + (DEFAULT_PADDLE_LENGTH/2));
+        m_ball.serve_ball_position(m_player2.get_xpos() - DEFAULT_BALL_RADIUS, m_player2.get_ypos() + (m_player2.get_length()/2));
         if(IsKeyDown(KEY_ENTER))
         {
             m_ball.set_xspeed(-(DEFAULT_BALL_XSPEED));
@@ -221,6 +229,8 @@ void Game::serve()
     }
     else if (m_last_serve == 1 && m_ai_player)
         ai_serve();
+
+    m_audio.play_serve();
 }
 
 void Game::serve_direction(int player)

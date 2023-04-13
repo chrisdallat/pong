@@ -30,6 +30,7 @@ void Ball::draw_bounce()
             DrawCircle(m_bounce_left, m_bounce_ypos, get_radius() + 5, GRAY);
             DrawCircle(m_bounce_left, m_bounce_ypos, get_radius() + 3, BLACK);
             DrawCircleGradient(get_xpos(), get_ypos(), get_radius(), WHITE, DARKGRAY);//game ball
+            m_audio.play_bounce();
             return;
         }
         else
@@ -45,6 +46,7 @@ void Ball::draw_bounce()
             DrawCircle(m_bounce_right, m_bounce_ypos, get_radius() + 5, GRAY);
             DrawCircle(m_bounce_right, m_bounce_ypos, get_radius() + 3, BLACK);
             DrawCircle(get_xpos(), get_ypos(), get_radius(), WHITE);//game ball
+            m_audio.play_bounce();
             return;
         }
         else
@@ -139,6 +141,7 @@ int Ball::get_score1()
 void Ball::point_player1()
 {
     m_player1_score += 1;
+    m_audio.play_clap();
 }
         
 int Ball::get_score2()
@@ -149,6 +152,7 @@ int Ball::get_score2()
 void Ball::point_player2()
 {
     m_player2_score += 1;
+    m_audio.play_clap();
 }
 
 void Ball::reset_score()
