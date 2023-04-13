@@ -121,7 +121,10 @@ void Ball::move_ball()
     else if(get_ypos() > 0 && get_yspeed() < 0) 
         set_ypos(get_yspeed());
     else
+    {
         set_yspeed(get_yspeed() * -1);
+        m_audio.play_bounce();
+    }
 }
 
 void Ball::ball_radius_maintain()
