@@ -1,5 +1,10 @@
 # PONG
 
+# BUGS TODO:
+
+* Ball gets stuck in/on paddle occasionally
+* Ball size trips out when reversiball-x/y powerup hit. 
+
 Pong clone in C++ using raylib game library, and python GUI using PyQT
 
 from /pong run game from python main after installing dependencies with:
